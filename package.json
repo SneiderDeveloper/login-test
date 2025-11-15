@@ -1,0 +1,23 @@
+{
+  "name": "login-test",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@azure/msal-browser": "^4.26.1",
+    "@nuxt/ui": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "nuxt": "^4.2.1",
+    "nuxt-storage": "^1.2.2",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
+  }
+}
