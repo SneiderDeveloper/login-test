@@ -2,7 +2,8 @@
 import * as z from 'zod'
 import type { FormSubmitEvent, AuthFormField } from '@nuxt/ui'
 import { useLoginMicrosoft } from '~/utils/loginMicrosoft'
-// import { setData } from 'nuxt-storage/local-storage'
+import { authLoginSocialNetwork } from '~/utils/authLoginSocialNetwork'
+import { setData } from 'nuxt-storage/local-storage'
 
 const storeMicrosoft = useLoginMicrosoft()
 const toast = useToast()
@@ -39,7 +40,6 @@ const providers = [{
   label: 'Microsoft',
   icon: 'i-simple-icons-microsoft',
   onClick: async () => {
-    // toast.add({ title: 'Microsoft', description: 'Login with Microsoft' })
     loading.value = true
     await storeMicrosoft.signIn()
     loading.value = false
@@ -52,15 +52,24 @@ const providers = [{
 
         if (userToken) {
           // setData('userData', userSocialData)
-          // setData('token', userToken)
+          setData('token', userToken)
           // setData('socialType', 'microsoft')
 
-          console.log(userSocialData)
-          console.log(userToken)
+          console.log({ userSocialData })
+          console.log({ userToken })
+          
+          const data = await authLoginSocialNetwork({
+            token: userToken,
+            socialData: userSocialData,
+            type: 'microsoft'
+          })
+          
+          console.log({ data })
         }
 
       } catch (error) {
-        alert("Error: Unable to process request");
+        toast.add({ title: 'Error', description: 'Unable to process request' })
+        console.error('Error during social login:', error)
       }
     }
 

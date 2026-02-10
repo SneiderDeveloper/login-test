@@ -1,7 +1,7 @@
 // import moment from 'moment-timezone'
 
 export const constructApiUrl = (path, params={}) => {
-    const { url } = siteConfig
+    const url = 'https://agionedev.azurewebsites.net'
     // const timezone = moment.tz.guess()
       
     const api = new URL(`${url}/api${path}`)

@@ -4,4 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   modules: ['@nuxt/ui'],
+  // app: {
+  //   baseURL: '/cargo/',
+  //   // buildAssetsDir: '/_nuxt/',
+  // },
 })

@@ -10,8 +10,8 @@ export const useLoginMicrosoft = () => {
         auth: {
             clientId:  CLIENT_ID,
             authority: AUTHORITY,
-            // redirectUri: location.origin,
-            // postLogoutRedirectUri: location.origin
+            redirectUri: location?.origin,
+            postLogoutRedirectUri: location?.origin
         },
         cache: {
             cacheLocation: "localStorage",
@@ -119,7 +119,7 @@ export const useLoginMicrosoft = () => {
             if(!userName) return;
             const logoutRequest = {
                 account: userName,
-                postLogoutRedirectUri: `${location.origin}#/auth/logout/`
+                postLogoutRedirectUri: `${location.origin}/`
             };
             await myMSALObj.logoutRedirect(logoutRequest);
         } catch (error) {
